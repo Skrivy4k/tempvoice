@@ -120,7 +120,7 @@ export default {
 
 ## Philosophy
 
-TempVoice was designed to feel native — built to blend in. No clutter. Every interaction is smooth, and voice rooms can be managed directly from server text chat commands like `!name`.
+TempVoice was designed to feel native — built to blend in. No clutter. Every interaction is smooth, and voice rooms can be managed directly from server text chat with the `!name` command.
 
 ## Configuration
 
