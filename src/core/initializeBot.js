@@ -23,7 +23,9 @@ export default async function initializeBot(client) {
   client.modals = new Collection()
 
   // Load temp channels from database into memory
-  client.tempVoiceOwners = loadTempChannelsToMemory()
+  const { owners, textChannels } = loadTempChannelsToMemory()
+  client.tempVoiceOwners = owners
+  client.tempVoiceTextChannels = textChannels
 
   // Load all modal handlers dynamically
   const modalsDir = path.join(__dirname, '../modals')

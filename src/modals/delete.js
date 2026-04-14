@@ -21,6 +21,14 @@ export default {
 
     await interaction.reply({ content: t('deleted', lang), flags: MessageFlags.Ephemeral })
 
+    // Delete the associated text channel
+    const textChannelId = client.tempVoiceTextChannels?.get(channel.id)
+    if (textChannelId) {
+      const textChannel = client.channels.cache.get(textChannelId)
+      if (textChannel) await textChannel.delete().catch(() => {})
+      client.tempVoiceTextChannels?.delete(channel.id)
+    }
+
     setTimeout(() => {
       channel.delete().catch(() => {})
       client.tempVoiceOwners.delete(channel.id)

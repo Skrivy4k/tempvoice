@@ -37,6 +37,14 @@ export async function cleanupInactiveChannels(client) {
 
         // Check if channel is still empty
         if (channel.members.size === 0) {
+          // Delete the associated text channel first
+          const textChannelId = client.tempVoiceTextChannels?.get(dbChannel.channel_id)
+          if (textChannelId) {
+            const textChannel = await guild.channels.fetch(textChannelId).catch(() => null)
+            if (textChannel) await textChannel.delete('Auto-cleanup: linked voice channel removed').catch(() => {})
+            client.tempVoiceTextChannels?.delete(dbChannel.channel_id)
+          }
+
           await channel.delete('Auto-cleanup: Inactive for 24+ hours')
           removeTempChannel(dbChannel.channel_id)
           client.tempVoiceOwners?.delete(dbChannel.channel_id)

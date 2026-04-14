@@ -57,7 +57,6 @@ Edit `.env` with your bot credentials:
 DISCORD_TOKEN=your_token_here
 GUILD_ID=...
 CATEGORY_CHANNEL_ID=...
-EMBED_CHANNEL_ID=...
 VOICE_CHANNEL_ID=...
 LOG_CHANNEL_ID=...
 BANNER_URL=...
@@ -155,7 +154,6 @@ Solution: Check your .env file has all required variables:
 - DISCORD_TOKEN
 - GUILD_ID
 - CATEGORY_CHANNEL_ID
-- EMBED_CHANNEL_ID
 - VOICE_CHANNEL_ID
 ```
 
@@ -210,7 +208,7 @@ This prevents spam. Can be adjusted in src/constants.js
 Solutions:
 1. Ensure you're in a temp voice channel (not the trigger channel)
 2. Make sure you're the owner of the channel (or using "claim")
-3. Check bot has "Send Messages" permission in embed channel
+3. Check bot has "Send Messages" permission in the category
 4. Verify bot is online and not restarting
 ```
 

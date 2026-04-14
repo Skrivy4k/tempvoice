@@ -1,7 +1,5 @@
-import { embedSender } from '../handlers/embedSender.js'
 import { logStartup } from '../utils/logger.js'
 import config from '../../config/config.js'
-import t from '../utils/t.js'
 import { validateBotPermissions, validateChannels } from '../utils/validatePermissions.js'
 import { startAutoCleanup } from '../utils/autoCleanup.js'
 
@@ -31,17 +29,13 @@ export default async client => {
   const channels = await guild.channels.fetch()
 
   const category = channels.get(process.env.CATEGORY_CHANNEL_ID)
-  const embed = channels.get(process.env.EMBED_CHANNEL_ID)
   const voice = channels.get(process.env.VOICE_CHANNEL_ID)
   const log = process.env.LOG_CHANNEL_ID
     ? channels.get(process.env.LOG_CHANNEL_ID)
     : null
 
-  await embedSender(embed)
-
   logStartup(`Logged in as ${client.user.tag}`)
   logStartup(`Category: ${category.name} (${category.id})`)
-  logStartup(`Embed: ${embed.name} (${embed.id})`)
   logStartup(`Voice: ${voice.name} (${voice.id})`)
   logStartup(`Log: ${log ? `${log.name} (${log.id})` : '[not set]'}`)
   logStartup(`Lang: ${config.language}`)

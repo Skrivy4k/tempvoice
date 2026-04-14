@@ -25,6 +25,7 @@ export function initDatabase() {
       channel_id TEXT PRIMARY KEY,
       owner_id TEXT NOT NULL,
       guild_id TEXT NOT NULL,
+      text_channel_id TEXT,
       created_at INTEGER NOT NULL,
       last_activity INTEGER NOT NULL
     );
@@ -65,6 +66,13 @@ export function initDatabase() {
     CREATE INDEX IF NOT EXISTS idx_channel_templates_guild ON channel_templates(guild_id);
   `)
 
+  // Migration: add text_channel_id column for existing databases
+  try {
+    db.exec('ALTER TABLE temp_channels ADD COLUMN text_channel_id TEXT')
+  } catch (_) {
+    // Column already exists — no action needed
+  }
+
   return db
 }
 
@@ -84,14 +92,15 @@ export function getDatabase() {
  * @param {string} channelId - Discord channel ID
  * @param {string} ownerId - Discord user ID of the owner
  * @param {string} guildId - Discord guild ID
+ * @param {string|null} textChannelId - Discord text channel ID linked to this voice channel
  */
-export function addTempChannel(channelId, ownerId, guildId) {
+export function addTempChannel(channelId, ownerId, guildId, textChannelId = null) {
   const now = Date.now()
   const stmt = db.prepare(`
-    INSERT INTO temp_channels (channel_id, owner_id, guild_id, created_at, last_activity)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO temp_channels (channel_id, owner_id, guild_id, text_channel_id, created_at, last_activity)
+    VALUES (?, ?, ?, ?, ?, ?)
   `)
-  stmt.run(channelId, ownerId, guildId, now, now)
+  stmt.run(channelId, ownerId, guildId, textChannelId, now, now)
 }
 
 /**
@@ -112,6 +121,17 @@ export function getTempChannelOwner(channelId) {
   const stmt = db.prepare('SELECT owner_id FROM temp_channels WHERE channel_id = ?')
   const row = stmt.get(channelId)
   return row ? row.owner_id : null
+}
+
+/**
+ * Gets the text channel ID linked to a temporary voice channel
+ * @param {string} channelId - Discord voice channel ID
+ * @returns {string|null} Text channel ID or null if not found
+ */
+export function getTempChannelTextChannelId(channelId) {
+  const stmt = db.prepare('SELECT text_channel_id FROM temp_channels WHERE channel_id = ?')
+  const row = stmt.get(channelId)
+  return row ? row.text_channel_id : null
 }
 
 /**
@@ -145,17 +165,21 @@ export function getInactiveChannels(maxAge) {
 }
 
 /**
- * Loads all temp channels into memory (for compatibility with existing code)
- * @returns {Map} Map of channel_id -> owner_id
+ * Loads all temp channels into memory
+ * @returns {{ owners: Map<string,string>, textChannels: Map<string,string> }}
  */
 export function loadTempChannelsToMemory() {
-  const stmt = db.prepare('SELECT channel_id, owner_id FROM temp_channels')
+  const stmt = db.prepare('SELECT channel_id, owner_id, text_channel_id FROM temp_channels')
   const rows = stmt.all()
-  const map = new Map()
+  const owners = new Map()
+  const textChannels = new Map()
   for (const row of rows) {
-    map.set(row.channel_id, row.owner_id)
+    owners.set(row.channel_id, row.owner_id)
+    if (row.text_channel_id) {
+      textChannels.set(row.channel_id, row.text_channel_id)
+    }
   }
-  return map
+  return { owners, textChannels }
 }
 
 /**

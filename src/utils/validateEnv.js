@@ -7,7 +7,6 @@ export function validateEnv() {
     'DISCORD_TOKEN',
     'GUILD_ID',
     'CATEGORY_CHANNEL_ID',
-    'EMBED_CHANNEL_ID',
     'VOICE_CHANNEL_ID'
   ]
 
@@ -24,7 +23,6 @@ export function validateEnv() {
   const ids = [
     'GUILD_ID',
     'CATEGORY_CHANNEL_ID',
-    'EMBED_CHANNEL_ID',
     'VOICE_CHANNEL_ID',
     'LOG_CHANNEL_ID'
   ]
