@@ -6,6 +6,7 @@ import handleReady from '../events/ready.js'
 import handleInteractionCreate from '../events/interactionCreate.js'
 import handleVoiceStateUpdate from '../events/voiceStateUpdate.js'
 import handleChannelUpdate from '../events/channelUpdate.js'
+import handleMessageCreate from '../events/messageCreate.js'
 import { initDatabase, loadTempChannelsToMemory } from '../utils/database.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -42,4 +43,5 @@ export default async function initializeBot(client) {
   client.on('interactionCreate', interaction => handleInteractionCreate(client, interaction))
   client.on('voiceStateUpdate', (oldState, newState) => handleVoiceStateUpdate(client, oldState, newState))
   client.on('channelUpdate', (oldChannel, newChannel) => handleChannelUpdate(client, oldChannel, newChannel))
+  client.on('messageCreate', message => handleMessageCreate(client, message))
 }

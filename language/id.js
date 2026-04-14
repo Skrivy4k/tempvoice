@@ -3,7 +3,7 @@ const id = {
     "dashboard_title": "Dasbor Tempvoice",
     "dashboard_description": "Selamat datang di dasbor Tempvoice kamu — atur dan sesuaikan ruang obrolan suaramu.",
     "dashboard_create_link": "Suaramu, ruangmu. Mulai ruang di https://discord.com/channels/{guildId}/{channelId}",
-    "dashboard_footer": "Gunakan tombol di bawah ini untuk kelola channel suaramu.",
+    "dashboard_footer": "Ketik !help untuk melihat semua perintah yang tersedia.",
     "name_desc": "Ubah nama channel suara",
     "limit_desc": "Atur batas jumlah pengguna di channel",
     "privacy_desc": "Ubah pengaturan privasi channel",
@@ -162,7 +162,19 @@ const id = {
     "interaction_already_active": "Masih ada interaksi aktif. Selesaikan dulu ya.",
     "invalid_category": "CATEGORY_CHANNEL_ID tidak valid atau bukan kategori.",
     "invalid_embed": "EMBED_CHANNEL_ID tidak valid atau bukan channel teks.",
-    "invalid_voice": "VOICE_CHANNEL_ID tidak valid atau bukan voice channel."
+    "invalid_voice": "VOICE_CHANNEL_ID tidak valid atau bukan voice channel.",
+    "not_temp_channel": "Ini bukan voice channel sementara.",
+    "rate_limited": "Kamu terlalu cepat! Coba lagi dalam {seconds} detik.",
+    "max_channels_reached": "Kamu sudah mencapai batas {max} channel aktif. Tutup salah satu dulu.",
+    "inappropriate_name": "Nama channel mengandung konten tidak pantas. Pilih nama lain.",
+    "error_name": "Terjadi kesalahan saat mengganti nama channel.",
+    "cmd_privacy_usage": "Penggunaan: `!privacy <opsi>`. Opsi: {options}",
+    "cmd_region_usage": "Penggunaan: `!region <wilayah>`. Opsi: {options}",
+    "cmd_bitrate_usage": "Penggunaan: `!bitrate <kbps>`. Opsi: {options}",
+    "cmd_user_usage": "Penggunaan: `!{cmd} @user`",
+    "log_startup": "Bot berhasil dijalankan.",
+    "log_auto_cleanup": "{channel} dihapus otomatis (tidak aktif selama {hours} jam).",
+    "invalid_token": "Token bot tidak valid. Periksa file .env kamu."
 }
 
 export default id

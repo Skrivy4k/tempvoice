@@ -3,7 +3,7 @@ const cn = {
     "dashboard_title": "Tempvoice 控制面板",
     "dashboard_description": "欢迎来到 Tempvoice 控制面板 — 自定义和管理你的语音频道。",
     "dashboard_create_link": "你的频道，你来掌控。点击创建：https://discord.com/channels/{guildId}/{channelId}",
-    "dashboard_footer": "使用下方按钮来管理你的语音频道。",
+    "dashboard_footer": "输入 !help 查看所有可用命令。",
     "name_desc": "修改语音频道名称",
     "limit_desc": "设置频道人数上限",
     "privacy_desc": "调整频道隐私设置",
@@ -162,7 +162,19 @@ const cn = {
     "interaction_already_active": "已有进行中的操作，请先完成当前操作。",
     "invalid_category": "CATEGORY_CHANNEL_ID 无效或不是一个分类频道。",
     "invalid_embed": "EMBED_CHANNEL_ID 无效或不是一个文字频道。",
-    "invalid_voice": "VOICE_CHANNEL_ID 无效或不是一个语音频道。"
+    "invalid_voice": "VOICE_CHANNEL_ID 无效或不是一个语音频道。",
+    "not_temp_channel": "这不是一个临时语音频道。",
+    "rate_limited": "操作太快了！请在 {seconds} 秒后重试。",
+    "max_channels_reached": "已达到最多 {max} 个频道的上限。请先关闭一个现有频道。",
+    "inappropriate_name": "该频道名称包含不当内容，请选择其他名称。",
+    "error_name": "重命名频道时出错。",
+    "cmd_privacy_usage": "用法：`!privacy <选项>`。选项：{options}",
+    "cmd_region_usage": "用法：`!region <区域>`。选项：{options}",
+    "cmd_bitrate_usage": "用法：`!bitrate <kbps>`。选项：{options}",
+    "cmd_user_usage": "用法：`!{cmd} @用户`",
+    "log_startup": "机器人启动成功。",
+    "log_auto_cleanup": "{channel} 已自动删除（{hours} 小时无活动）。",
+    "invalid_token": "Bot Token 无效，请检查你的 .env 文件。"
 }
 
 export default cn

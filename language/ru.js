@@ -3,7 +3,7 @@ const ru = {
     "dashboard_title": "Панель Tempvoice",
     "dashboard_description": "Добро пожаловать в панель Tempvoice — управляй и настраивай свой голосовой канал.",
     "dashboard_create_link": "Твой голос — твоя комната. Начни здесь: https://discord.com/channels/{guildId}/{channelId}",
-    "dashboard_footer": "Используй кнопки ниже, чтобы управлять каналом.",
+    "dashboard_footer": "Введи !help чтобы увидеть все доступные команды.",
     "name_desc": "Изменить название голосового канала",
     "limit_desc": "Установить лимит пользователей",
     "privacy_desc": "Настроить приватность канала",
@@ -162,7 +162,19 @@ const ru = {
     "interaction_already_active": "Уже есть активная сессия. Заверши её перед новой.",
     "invalid_category": "CATEGORY_CHANNEL_ID недействителен или не является категорией.",
     "invalid_embed": "EMBED_CHANNEL_ID недействителен или не является текстовым каналом.",
-    "invalid_voice": "VOICE_CHANNEL_ID недействителен или не является голосовым каналом."
+    "invalid_voice": "VOICE_CHANNEL_ID недействителен или не является голосовым каналом.",
+    "not_temp_channel": "Это не временный голосовой канал.",
+    "rate_limited": "Слишком быстро! Попробуй через {seconds} секунд.",
+    "max_channels_reached": "Ты достиг максимума — {max} каналов. Сначала закрой один из существующих.",
+    "inappropriate_name": "Название канала содержит неприемлемое содержимое. Выбери другое.",
+    "error_name": "Ошибка при переименовании канала.",
+    "cmd_privacy_usage": "Использование: `!privacy <опция>`. Опции: {options}",
+    "cmd_region_usage": "Использование: `!region <регион>`. Опции: {options}",
+    "cmd_bitrate_usage": "Использование: `!bitrate <кбит/с>`. Опции: {options}",
+    "cmd_user_usage": "Использование: `!{cmd} @пользователь`",
+    "log_startup": "Бот успешно запущен.",
+    "log_auto_cleanup": "{channel} был автоматически удалён (неактивен {hours} часов).",
+    "invalid_token": "Неверный токен бота. Проверь файл .env."
 }
 
 export default ru

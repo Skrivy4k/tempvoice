@@ -30,27 +30,27 @@ export const createVoiceEmbed = () => {
   const lang = config.language
 
   const commands = [
-    ['name', '1356995682963292230'],
-    ['limit', '1356995669298122854'],
-    ['privacy', '1356995699472076820'],
-    ['dnd', '1356995625404858558'],
-    ['region', '1356995714542075914'],
-    ['trust', '1356995749036036156'],
-    ['untrust', '1356995771232157783'],
-    ['block', '1356995584497680384'],
-    ['unblock', '1356995760163520573'],
-    ['bitrate', '1356995567368016085'],
-    ['invite', '1356995639422091485'],
-    ['kick', '1356995655188349069'],
-    ['claim', '1356995597751812187'],
-    ['transfer', '1356995727221461082'],
-    ['delete', '1356995611185909824']
+    ['name', '`!name <new name>`'],
+    ['limit', '`!limit <0-99>`'],
+    ['privacy', '`!privacy <lock|unlock|invisible|visible|closechat|openchat>`'],
+    ['dnd', '`!dnd`'],
+    ['region', '`!region <region>`'],
+    ['trust', '`!trust @user`'],
+    ['untrust', '`!untrust @user`'],
+    ['block', '`!block @user`'],
+    ['unblock', '`!unblock @user`'],
+    ['bitrate', '`!bitrate <32|48|64|80|96>`'],
+    ['invite', '`!invite @user`'],
+    ['kick', '`!kick @user`'],
+    ['claim', '`!claim`'],
+    ['transfer', '`!transfer @user`'],
+    ['delete', '`!delete`']
   ]
 
   const desc = [
     t('dashboard_description', lang),
     '',
-    ...commands.map(([k]) => `${unicodeEmojis[k]} **${t(k, lang)}**: ${t(`${k}_desc`, lang)}`),
+    ...commands.map(([k, usage]) => `${unicodeEmojis[k]} ${usage} — ${t(`${k}_desc`, lang)}`),
     '',
     t('dashboard_create_link', lang, {
       guildId: GUILD_ID,

@@ -3,7 +3,7 @@ const en = {
     "dashboard_title": "Tempvoice Dashboard",
     "dashboard_description": "Welcome to your Tempvoice dashboard — manage and customize your voice room.",
     "dashboard_create_link": "Your voice, your space. Start a room in https://discord.com/channels/{guildId}/{channelId}",
-    "dashboard_footer": "Press the buttons below to manage your voice room.",
+    "dashboard_footer": "Type !help to see all available commands.",
     "name_desc": "Change the voice channel name",
     "limit_desc": "Set the user limit for the channel",
     "privacy_desc": "Adjust channel privacy settings",
@@ -160,9 +160,18 @@ const en = {
     "interaction_timeout": "Interaction timed out due to inactivity.",
     "error_interaction": "Something went wrong. Please try again later.",
     "interaction_already_active": "There's already an active interaction. Please complete it before starting a new one.",
-    "invalid_category": "CATEGORY_CHANNEL_ID is invalid or not a category.",
-    "invalid_embed": "EMBED_CHANNEL_ID is invalid or not a text channel.",
-    "invalid_voice": "VOICE_CHANNEL_ID is invalid or not a voice channel."
+    "not_temp_channel": "This is not a temporary voice channel.",
+    "rate_limited": "You're going too fast! Try again in {seconds} seconds.",
+    "max_channels_reached": "You've reached the maximum of {max} active channels. Please close one of your existing channels first.",
+    "inappropriate_name": "That channel name contains inappropriate content. Please choose a different name.",
+    "error_name": "An error occurred while renaming the channel.",
+    "cmd_privacy_usage": "Usage: `!privacy <option>`. Options: {options}",
+    "cmd_region_usage": "Usage: `!region <region>`. Options: {options}",
+    "cmd_bitrate_usage": "Usage: `!bitrate <kbps>`. Options: {options}",
+    "cmd_user_usage": "Usage: `!{cmd} @user`",
+    "log_startup": "Bot started successfully.",
+    "log_auto_cleanup": "{channel} was automatically deleted (inactive for {hours} hours).",
+    "invalid_token": "Invalid bot token. Please check your .env file."
 }
 
 export default en

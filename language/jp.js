@@ -3,7 +3,7 @@ const jp = {
     "dashboard_title": "Tempvoice ダッシュボード",
     "dashboard_description": "ようこそ、Tempvoice ダッシュボードへ — あなたのボイスチャンネルを管理・カスタマイズしよう。",
     "dashboard_create_link": "自分の声、自分の空間。今すぐ始めよう: https://discord.com/channels/{guildId}/{channelId}",
-    "dashboard_footer": "下のボタンでチャンネルを管理できます。",
+    "dashboard_footer": "下のボタンでチャンネルを管理できます。 !help で全コマンドを確認できます。",
     "name_desc": "ボイスチャンネルの名前を変更",
     "limit_desc": "チャンネルのユーザー上限を設定",
     "privacy_desc": "チャンネルのプライバシー設定を変更",
@@ -162,7 +162,19 @@ const jp = {
     "interaction_already_active": "すでにアクティブな操作があります。先にそれを完了してください。",
     "invalid_category": "CATEGORY_CHANNEL_ID は無効か、カテゴリではありません。",
     "invalid_embed": "EMBED_CHANNEL_ID は無効か、テキストチャンネルではありません。",
-    "invalid_voice": "VOICE_CHANNEL_ID は無効か、ボイスチャンネルではありません。"
+    "invalid_voice": "VOICE_CHANNEL_ID は無効か、ボイスチャンネルではありません。",
+    "not_temp_channel": "これは一時的なボイスチャンネルではありません。",
+    "rate_limited": "操作が速すぎます！ {seconds} 秒後にお試しください。",
+    "max_channels_reached": "最大 {max} チャンネルに達しました。既存のチャンネルを閉じてください。",
+    "inappropriate_name": "チャンネル名に不適切なコンテンツが含まれています。別の名前を選んでください。",
+    "error_name": "チャンネル名の変更中にエラーが発生しました。",
+    "cmd_privacy_usage": "使い方: `!privacy <オプション>`。オプション: {options}",
+    "cmd_region_usage": "使い方: `!region <リージョン>`。オプション: {options}",
+    "cmd_bitrate_usage": "使い方: `!bitrate <kbps>`。オプション: {options}",
+    "cmd_user_usage": "使い方: `!{cmd} @ユーザー`",
+    "log_startup": "ボットが正常に起動しました。",
+    "log_auto_cleanup": "{channel} は自動削除されました（{hours} 時間非活動）。",
+    "invalid_token": "無効なトークンです。.env ファイルを確認してください。"
 }
 
 export default jp

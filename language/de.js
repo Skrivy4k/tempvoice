@@ -3,7 +3,7 @@ const de = {
   "dashboard_title": "Tempvoice-Dashboard",
   "dashboard_description": "Willkommen in deinem Tempvoice-Dashboard – verwalte und passe deinen Sprachkanal an.",
   "dashboard_create_link": "Deine Stimme, dein Raum. Starte einen Kanal in https://discord.com/channels/{guildId}/{channelId}",
-  "dashboard_footer": "Nutze die Schaltflächen unten, um deinen Sprachkanal zu verwalten.",
+  "dashboard_footer": "Tippe !help um alle verfügbaren Befehle zu sehen.",
   "name_desc": "Namen des Sprachkanals ändern",
   "limit_desc": "Nutzerlimit für den Kanal festlegen",
   "privacy_desc": "Privatsphäre-Einstellungen für den Kanal anpassen",
@@ -163,11 +163,16 @@ const de = {
   "invalid_category": "CATEGORY_CHANNEL_ID ist ungültig oder keine Kategorie.",
   "invalid_embed": "EMBED_CHANNEL_ID ist ungültig oder kein Textkanal.",
   "invalid_voice": "VOICE_CHANNEL_ID ist ungültig oder kein Sprachkanal.",
-
-  // New in v2.0.0
+  "not_temp_channel": "Dies ist kein temporärer Sprachkanal.",
   "rate_limited": "Du machst das zu schnell! Versuche es in {seconds} Sekunden erneut.",
   "max_channels_reached": "Du hast das Maximum von {max} aktiven Kanälen erreicht. Bitte schließe zuerst einen deiner bestehenden Kanäle.",
   "inappropriate_name": "Dieser Kanalname enthält unangemessene Inhalte. Bitte wähle einen anderen Namen.",
+  "error_name": "Beim Umbenennen des Kanals ist ein Fehler aufgetreten.",
+  "cmd_privacy_usage": "Verwendung: `!privacy <Option>`. Optionen: {options}",
+  "cmd_region_usage": "Verwendung: `!region <Region>`. Optionen: {options}",
+  "cmd_bitrate_usage": "Verwendung: `!bitrate <kbps>`. Optionen: {options}",
+  "cmd_user_usage": "Verwendung: `!{cmd} @Nutzer`",
+  "log_startup": "Bot erfolgreich gestartet.",
   "log_auto_cleanup": "{channel} wurde automatisch gelöscht (inaktiv seit {hours} Stunden).",
   "invalid_token": "Ungültiger Bot-Token. Bitte überprüfe deine .env Datei."
 }
