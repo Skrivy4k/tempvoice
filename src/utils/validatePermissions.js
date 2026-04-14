@@ -66,7 +66,6 @@ export async function validateChannels(client) {
   const requiredChannels = {
     GUILD_ID: 'guild',
     CATEGORY_CHANNEL_ID: 'category',
-    EMBED_CHANNEL_ID: 'text channel (embed)',
     VOICE_CHANNEL_ID: 'voice channel (trigger)'
   }
 
