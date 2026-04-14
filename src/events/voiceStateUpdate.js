@@ -98,7 +98,7 @@ export default async (client, oldState, newState) => {
         const textChannel = await newChannel.guild.channels.create({
           name: `${safeUsername}-chat`,
           type: ChannelType.GuildText,
-          parent: process.env.CATEGORY_CHANNEL_ID
+          parent: temp.parentId ?? process.env.CATEGORY_CHANNEL_ID
         })
 
         client.tempVoiceTextChannels ??= new Map()
