@@ -58,6 +58,11 @@ export default async (client, interaction) => {
       return interaction.reply({ content: t('different_channel', lang), flags: MessageFlags.Ephemeral })
     }
 
+    const linkedTextChannelId = client.tempVoiceTextChannels?.get(channel.id)
+    if (linkedTextChannelId && interaction.channelId !== linkedTextChannelId) {
+      return interaction.reply({ content: t('different_channel', lang), flags: MessageFlags.Ephemeral })
+    }
+
     const isOwner = client.tempVoiceOwners?.get(channel.id) === userId
     if (!isOwner && id !== 'claim') {
       return interaction.reply({ content: t('not_owner', lang), flags: MessageFlags.Ephemeral })
