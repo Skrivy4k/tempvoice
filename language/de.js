@@ -3,7 +3,7 @@ const de = {
   "dashboard_title": "Tempvoice-Dashboard",
   "dashboard_description": "Willkommen in deinem Tempvoice-Dashboard – verwalte und passe deinen Sprachkanal an.",
   "dashboard_create_link": "Deine Stimme, dein Raum. Starte einen Kanal in https://discord.com/channels/{guildId}/{channelId}",
-  "dashboard_footer": "Tippe !help um alle verfügbaren Befehle zu sehen.",
+  "dashboard_footer": "Tippe !help, um alle verfügbaren Befehle zu sehen.",
   "name_desc": "Namen des Sprachkanals ändern",
   "limit_desc": "Nutzerlimit für den Kanal festlegen",
   "privacy_desc": "Privatsphäre-Einstellungen für den Kanal anpassen",
