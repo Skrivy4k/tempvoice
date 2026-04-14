@@ -89,8 +89,14 @@ export default async (client, oldState, newState) => {
         client.tempVoiceOwners.set(temp.id, member.id)
 
         // Create a dedicated text channel for this voice channel
+        const safeUsername = member.user.username
+          .toLowerCase()
+          .replace(/[^a-z0-9-]/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-|-$/g, '')
+          .slice(0, 90) || 'user'
         const textChannel = await newChannel.guild.channels.create({
-          name: `${member.user.username}-chat`,
+          name: `${safeUsername}-chat`,
           type: ChannelType.GuildText,
           parent: process.env.CATEGORY_CHANNEL_ID
         })

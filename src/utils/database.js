@@ -69,8 +69,11 @@ export function initDatabase() {
   // Migration: add text_channel_id column for existing databases
   try {
     db.exec('ALTER TABLE temp_channels ADD COLUMN text_channel_id TEXT')
-  } catch (_) {
-    // Column already exists — no action needed
+  } catch (err) {
+    // Only ignore "duplicate column name" errors; re-throw anything else
+    if (!err.message?.includes('duplicate column name')) {
+      throw err
+    }
   }
 
   return db
