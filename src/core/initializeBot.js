@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url'
 import { Collection } from 'discord.js'
 import handleReady from '../events/ready.js'
 import handleInteractionCreate from '../events/interactionCreate.js'
+import handleMessageCreate from '../events/messageCreate.js'
 import handleVoiceStateUpdate from '../events/voiceStateUpdate.js'
 import handleChannelUpdate from '../events/channelUpdate.js'
 import { initDatabase, loadTempChannelsToMemory } from '../utils/database.js'
@@ -23,9 +24,8 @@ export default async function initializeBot(client) {
   client.modals = new Collection()
 
   // Load temp channels from database into memory
-  const { owners, textChannels } = loadTempChannelsToMemory()
+  const { owners } = loadTempChannelsToMemory()
   client.tempVoiceOwners = owners
-  client.tempVoiceTextChannels = textChannels
 
   // Load all modal handlers dynamically
   const modalsDir = path.join(__dirname, '../modals')
@@ -40,6 +40,7 @@ export default async function initializeBot(client) {
   // Register event handlers (imported once, not on every event)
   client.once('ready', () => handleReady(client))
   client.on('interactionCreate', interaction => handleInteractionCreate(client, interaction))
+  client.on('messageCreate', message => handleMessageCreate(client, message))
   client.on('voiceStateUpdate', (oldState, newState) => handleVoiceStateUpdate(client, oldState, newState))
   client.on('channelUpdate', (oldChannel, newChannel) => handleChannelUpdate(client, oldChannel, newChannel))
 }
