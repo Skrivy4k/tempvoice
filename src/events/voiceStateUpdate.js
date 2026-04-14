@@ -4,7 +4,6 @@ import t from '../utils/t.js'
 import config from '../../config/config.js'
 import { addTempChannel, removeTempChannel, updateChannelActivity, getUserTempChannels } from '../utils/database.js'
 import { MAX_CHANNELS_PER_USER } from '../constants.js'
-import { embedSender } from '../handlers/embedSender.js'
 
 /**
  * Bounded set to prevent memory leaks
@@ -88,27 +87,8 @@ export default async (client, oldState, newState) => {
         client.tempVoiceOwners ??= new Map()
         client.tempVoiceOwners.set(temp.id, member.id)
 
-        // Create a dedicated text channel for this voice channel
-        const safeUsername = member.user.username
-          .toLowerCase()
-          .replace(/[^a-z0-9-]/g, '-')
-          .replace(/-+/g, '-')
-          .replace(/^-|-$/g, '')
-          .slice(0, 90) || 'user'
-        const textChannel = await newChannel.guild.channels.create({
-          name: `${safeUsername}-chat`,
-          type: ChannelType.GuildText,
-          parent: temp.parentId ?? process.env.CATEGORY_CHANNEL_ID
-        })
-
-        client.tempVoiceTextChannels ??= new Map()
-        client.tempVoiceTextChannels.set(temp.id, textChannel.id)
-
-        // Save to database (including the text channel ID)
-        addTempChannel(temp.id, member.id, newChannel.guild.id, textChannel.id)
-
-        // Send the control embed into the dedicated text channel
-        await embedSender(textChannel)
+        // Save to database
+        addTempChannel(temp.id, member.id, newChannel.guild.id)
 
         log('log_switched', client, {
           user: member.user.username,
@@ -156,20 +136,12 @@ export default async (client, oldState, newState) => {
 }
 
 /**
- * Deletes a temporary voice channel and its associated text channel
+ * Deletes a temporary voice channel
  * @param {VoiceChannel} channel - Discord voice channel to delete
  * @param {Client} client - Discord client instance
  */
 async function deleteChannel(channel, client) {
   if (!client.channels.cache.has(channel.id)) return
-
-  // Delete the associated text channel first
-  const textChannelId = client.tempVoiceTextChannels?.get(channel.id)
-  if (textChannelId) {
-    const textChannel = client.channels.cache.get(textChannelId)
-    if (textChannel) await textChannel.delete().catch(() => {})
-    client.tempVoiceTextChannels.delete(channel.id)
-  }
 
   try {
     await channel.delete()

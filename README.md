@@ -18,7 +18,7 @@
 ## Overview
 
 TempVoice is the easiest way for users to own their space.
-Join once and get your own voice room — private, customizable, and temporary. Take charge in seconds: rename it, lock it down, invite who you want, and block who you don’t. No commands. No distractions.
+Join once and get your own voice room — private, customizable, and temporary. Take charge in seconds: rename it, lock it down, invite who you want, and block who you don’t from your server text chat.
 
 ## Features
 
@@ -120,7 +120,7 @@ export default {
 
 ## Philosophy
 
-TempVoice was designed to feel native — built to blend in. No commands. No clutter. Every interaction is ephemeral, visual, and smooth. Let users manage their voice room like it's theirs — because it is.
+TempVoice was designed to feel native — built to blend in. No clutter. Every interaction is smooth, and voice rooms can be managed directly from server text chat commands like `!name`.
 
 ## Configuration
 
